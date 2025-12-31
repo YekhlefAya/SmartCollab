@@ -1,0 +1,475 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\hp\\Downloads\\SmartCollab\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\views\\projects\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\views\\projects\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\views\\shared\\_sidebar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\views\\shared\\_sidebar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\smartcollab.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\smartcollab.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\views\\files\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\views\\files\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\views\\calendar\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\views\\calendar\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\models\\taskassignment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\models\\taskassignment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\models\\appdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\models\\appdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\models\\projectmember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\models\\projectmember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\models\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\models\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\models\\commentmention.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\models\\commentmention.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\views\\auth\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\views\\auth\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\views\\shared\\_breadcrumb.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\views\\shared\\_breadcrumb.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\views\\shared\\_authlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\views\\shared\\_authlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|c:\\users\\hp\\downloads\\smartcollab\\smartcollab\\controllers\\allcontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45DB4E15-76F3-E05A-1AF6-6EDDA48147D9}|SmartCollab\\SmartCollab.csproj|solutionrelative:smartcollab\\controllers\\allcontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\File.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SmartCollab\\Models\\File.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Tasks\\Details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SmartCollab\\Views\\Tasks\\Details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Tasks\\List.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SmartCollab\\Views\\Tasks\\List.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\Task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SmartCollab\\Models\\Task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Tasks\\Edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SmartCollab\\Views\\Tasks\\Edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "SmartCollab\\Controllers\\DashboardController.cs",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "SmartCollab\\Controllers\\DashboardController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T08:58:56.924Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "SmartCollab\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "SmartCollab\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAgwJ0AAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T08:54:14.351Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Projects\\Index.cshtml",
+              "RelativeDocumentMoniker": "SmartCollab\\Views\\Projects\\Index.cshtml",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Projects\\Index.cshtml",
+              "RelativeToolTip": "SmartCollab\\Views\\Projects\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-20T15:29:55.109Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Sidebar.cshtml",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Shared\\_Sidebar.cshtml",
+              "RelativeDocumentMoniker": "SmartCollab\\Views\\Shared\\_Sidebar.cshtml",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Shared\\_Sidebar.cshtml",
+              "RelativeToolTip": "SmartCollab\\Views\\Shared\\_Sidebar.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-07T12:13:13.853Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Program.cs",
+              "RelativeDocumentMoniker": "SmartCollab\\Program.cs",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Program.cs",
+              "RelativeToolTip": "SmartCollab\\Program.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAEAAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-20T13:43:02.317Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\appsettings.json",
+              "RelativeDocumentMoniker": "SmartCollab\\appsettings.json",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\appsettings.json",
+              "RelativeToolTip": "SmartCollab\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-19T20:00:36.613Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ProjectMember.cs",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\ProjectMember.cs",
+              "RelativeDocumentMoniker": "SmartCollab\\Models\\ProjectMember.cs",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\ProjectMember.cs",
+              "RelativeToolTip": "SmartCollab\\Models\\ProjectMember.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T22:59:54.228Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Project.cs",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\Project.cs",
+              "RelativeDocumentMoniker": "SmartCollab\\Models\\Project.cs",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\Project.cs",
+              "RelativeToolTip": "SmartCollab\\Models\\Project.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAUwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T22:59:27.922Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SmartCollab.csproj",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\SmartCollab.csproj",
+              "RelativeDocumentMoniker": "SmartCollab\\SmartCollab.csproj",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\SmartCollab.csproj",
+              "RelativeToolTip": "SmartCollab\\SmartCollab.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-19T20:05:36.114Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "File.cs",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\File.cs",
+              "RelativeDocumentMoniker": "SmartCollab\\Models\\File.cs",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\File.cs",
+              "RelativeToolTip": "SmartCollab\\Models\\File.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA/wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T23:01:23.827Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Comment.cs",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\Comment.cs",
+              "RelativeDocumentMoniker": "SmartCollab\\Models\\Comment.cs",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\Comment.cs",
+              "RelativeToolTip": "SmartCollab\\Models\\Comment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T23:00:47.026Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Files\\Index.cshtml",
+              "RelativeDocumentMoniker": "SmartCollab\\Views\\Files\\Index.cshtml",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Files\\Index.cshtml",
+              "RelativeToolTip": "SmartCollab\\Views\\Files\\Index.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABgAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-20T15:54:54.31Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Calendar\\Index.cshtml",
+              "RelativeDocumentMoniker": "SmartCollab\\Views\\Calendar\\Index.cshtml",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Calendar\\Index.cshtml",
+              "RelativeToolTip": "SmartCollab\\Views\\Calendar\\Index.cshtml",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAAAJ8AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-19T19:55:29.806Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Tasks\\Details.cshtml",
+              "RelativeDocumentMoniker": "SmartCollab\\Views\\Tasks\\Details.cshtml",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Tasks\\Details.cshtml",
+              "RelativeToolTip": "SmartCollab\\Views\\Tasks\\Details.cshtml",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAgwKsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-20T15:39:08.163Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "SmartCollab\\Models\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\AppDbContext.cs",
+              "RelativeToolTip": "SmartCollab\\Models\\AppDbContext.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAUwEEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-20T13:53:54.619Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "List.cshtml",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Tasks\\List.cshtml",
+              "RelativeDocumentMoniker": "SmartCollab\\Views\\Tasks\\List.cshtml",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Tasks\\List.cshtml",
+              "RelativeToolTip": "SmartCollab\\Views\\Tasks\\List.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABcAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-20T15:36:01.384Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Task.cs",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\Task.cs",
+              "RelativeDocumentMoniker": "SmartCollab\\Models\\Task.cs",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\Task.cs",
+              "RelativeToolTip": "SmartCollab\\Models\\Task.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T22:59:40.05Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TaskAssignment.cs",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\TaskAssignment.cs",
+              "RelativeDocumentMoniker": "SmartCollab\\Models\\TaskAssignment.cs",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\TaskAssignment.cs",
+              "RelativeToolTip": "SmartCollab\\Models\\TaskAssignment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T23:00:27.842Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AppDbContextFactory.cs",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\AppDbContextFactory.cs",
+              "RelativeDocumentMoniker": "SmartCollab\\Models\\AppDbContextFactory.cs",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\AppDbContextFactory.cs",
+              "RelativeToolTip": "SmartCollab\\Models\\AppDbContextFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-20T13:49:42.581Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CommentMention.cs",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\CommentMention.cs",
+              "RelativeDocumentMoniker": "SmartCollab\\Models\\CommentMention.cs",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\CommentMention.cs",
+              "RelativeToolTip": "SmartCollab\\Models\\CommentMention.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T23:01:11.809Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\User.cs",
+              "RelativeDocumentMoniker": "SmartCollab\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Models\\User.cs",
+              "RelativeToolTip": "SmartCollab\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T22:58:46.124Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Tasks\\Edit.cshtml",
+              "RelativeDocumentMoniker": "SmartCollab\\Views\\Tasks\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Tasks\\Edit.cshtml",
+              "RelativeToolTip": "SmartCollab\\Views\\Tasks\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-19T19:55:27.284Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "_Breadcrumb.cshtml",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Shared\\_Breadcrumb.cshtml",
+              "RelativeDocumentMoniker": "SmartCollab\\Views\\Shared\\_Breadcrumb.cshtml",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Shared\\_Breadcrumb.cshtml",
+              "RelativeToolTip": "SmartCollab\\Views\\Shared\\_Breadcrumb.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-07T12:13:14.781Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Dashboard\\Index.cshtml",
+              "RelativeDocumentMoniker": "SmartCollab\\Views\\Dashboard\\Index.cshtml",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Dashboard\\Index.cshtml",
+              "RelativeToolTip": "SmartCollab\\Views\\Dashboard\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-07T12:13:14.614Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Auth\\Register.cshtml",
+              "RelativeDocumentMoniker": "SmartCollab\\Views\\Auth\\Register.cshtml",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Auth\\Register.cshtml",
+              "RelativeToolTip": "SmartCollab\\Views\\Auth\\Register.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-07T12:13:14.46Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Auth\\Login.cshtml",
+              "RelativeDocumentMoniker": "SmartCollab\\Views\\Auth\\Login.cshtml",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Auth\\Login.cshtml",
+              "RelativeToolTip": "SmartCollab\\Views\\Auth\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-07T12:13:08.456Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "_AuthLayout.cshtml",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Shared\\_AuthLayout.cshtml",
+              "RelativeDocumentMoniker": "SmartCollab\\Views\\Shared\\_AuthLayout.cshtml",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Views\\Shared\\_AuthLayout.cshtml",
+              "RelativeToolTip": "SmartCollab\\Views\\Shared\\_AuthLayout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-07T00:26:36.317Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "AllControllers.cs",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Controllers\\AllControllers.cs",
+              "RelativeDocumentMoniker": "SmartCollab\\Controllers\\AllControllers.cs",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\SmartCollab\\SmartCollab\\Controllers\\AllControllers.cs",
+              "RelativeToolTip": "SmartCollab\\Controllers\\AllControllers.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAQwAwAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T00:17:20.64Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

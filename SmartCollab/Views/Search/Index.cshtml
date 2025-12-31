@@ -1,0 +1,119 @@
+@{
+    ViewData["Title"] = "Recherche";
+}
+
+<div class="max-w-4xl mx-auto space-y-6">
+    <div class="bg-white rounded-2xl shadow-sm p-6">
+        <div class="relative">
+            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl"></i>
+            <input type="text" placeholder="Rechercher des projets, tâches, fichiers, personnes..."
+                class="w-full pl-12 pr-4 py-4 text-lg border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                value="@ViewData["Query"]" autofocus>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-4">
+            <span class="text-sm text-gray-500">Recherches récentes:</span>
+            <button class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200">maquettes dashboard</button>
+            <button class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200">API paiement</button>
+            <button class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200">Marie Martin</button>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-sm p-4">
+        <div class="flex space-x-2">
+            <button class="px-4 py-2 bg-indigo-100 text-indigo-700 rounded-xl font-medium">Tout (12)</button>
+            <button class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-xl font-medium">Projets (2)</button>
+            <button class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-xl font-medium">Tâches (6)</button>
+            <button class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-xl font-medium">Fichiers (3)</button>
+            <button class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-xl font-medium">Personnes (1)</button>
+        </div>
+    </div>
+
+    <div class="space-y-4">
+        <p class="text-sm text-gray-500">12 résultats pour "<span class="font-medium">dashboard</span>"</p>
+
+        <div class="bg-white rounded-2xl shadow-sm p-6 hover:shadow-md transition">
+            <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-folder text-indigo-600 text-xl"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center space-x-2 mb-1">
+                        <a href="/Projects/Details/1" class="font-semibold text-gray-800 hover:text-indigo-600">Refonte Site Web</a>
+                        <span class="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded-full">Projet</span>
+                    </div>
+                    <p class="text-gray-600 text-sm">Refonte complète incluant le nouveau <mark class="bg-yellow-200">dashboard</mark> admin...</p>
+                    <div class="flex items-center space-x-4 mt-2 text-sm text-gray-500">
+                        <span><i class="fas fa-tasks mr-1"></i>24 tâches</span>
+                        <span><i class="fas fa-users mr-1"></i>8 membres</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm p-6 hover:shadow-md transition">
+            <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-check-circle text-yellow-600 text-xl"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center space-x-2 mb-1">
+                        <a href="/Tasks/Details/1" class="font-semibold text-gray-800 hover:text-indigo-600">Finaliser les maquettes du <mark class="bg-yellow-200">dashboard</mark></a>
+                        <span class="px-2 py-0.5 bg-yellow-100 text-yellow-700 text-xs rounded-full">En cours</span>
+                    </div>
+                    <p class="text-gray-600 text-sm">Dernières maquettes Figma pour les écrans du <mark class="bg-yellow-200">dashboard</mark> admin...</p>
+                    <div class="flex items-center space-x-4 mt-2 text-sm text-gray-500">
+                        <span>Refonte Site Web</span>
+                        <span><i class="fas fa-user mr-1"></i>Marie Martin</span>
+                        <span><i class="fas fa-calendar mr-1"></i>15 déc.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm p-6 hover:shadow-md transition">
+            <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-file-image text-purple-600 text-xl"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center space-x-2 mb-1">
+                        <a href="#" class="font-semibold text-gray-800 hover:text-indigo-600"><mark class="bg-yellow-200">dashboard</mark>-v2.fig</a>
+                        <span class="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded-full">Fichier</span>
+                    </div>
+                    <p class="text-gray-600 text-sm">Maquettes Figma du <mark class="bg-yellow-200">dashboard</mark></p>
+                    <div class="flex items-center space-x-4 mt-2 text-sm text-gray-500">
+                        <span>2.4 MB</span>
+                        <span><i class="fas fa-user mr-1"></i>Marie Martin</span>
+                        <span><i class="fas fa-clock mr-1"></i>Il y a 2h</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm p-6 hover:shadow-md transition">
+            <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-check-circle text-green-600 text-xl"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center space-x-2 mb-1">
+                        <a href="/Tasks/Details/6" class="font-semibold text-gray-800 hover:text-indigo-600">Architecture <mark class="bg-yellow-200">dashboard</mark> analytics</a>
+                        <span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded-full">Terminé</span>
+                    </div>
+                    <p class="text-gray-600 text-sm">Définition de l'architecture technique du <mark class="bg-yellow-200">dashboard</mark>...</p>
+                    <div class="flex items-center space-x-4 mt-2 text-sm text-gray-500">
+                        <span>Refonte Site Web</span>
+                        <span><i class="fas fa-user mr-1"></i>Jean Dupont</span>
+                        <span><i class="fas fa-check mr-1"></i>Terminé le 1 déc.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center py-4">
+        <button class="text-indigo-600 hover:text-indigo-800 font-medium">
+            Charger plus de résultats
+        </button>
+    </div>
+</div>

@@ -1,0 +1,137 @@
+@model List<TaskListViewModel>
+@using SmartCollab.Models
+
+@{
+    ViewData["Title"] = "Mes Tâches";
+    ViewData["Breadcrumb"] = new List<(string, string)> { ("Accueil", "/"), ("Tâches", "") };
+
+    // Dictionnaire de traduction pour Priority
+    var priorityTranslations = new Dictionary<string, string>
+    {
+        { "Low", "Basse" },
+        { "Medium", "Moyenne" },
+        { "High", "Haute" },
+        { "Urgent", "Urgente" },
+        { "Normal", "Normale" }
+    };
+
+    // Dictionnaire de traduction pour Status
+    var statusTranslations = new Dictionary<string, string>
+    {
+        { "NotStarted", "Non débuté" },
+        { "InProgress", "En cours" },
+        { "Completed", "Terminé" },
+        { "Review", "En revue" },
+        { "Cancelled", "Annulé" },
+        { "OnHold", "En attente" }
+    };
+}
+
+<div class="space-y-6">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between">
+        <div>
+            <h1 class="text-2xl font-bold text-gray-800">Mes Tâches</h1>
+            <p class="text-gray-600">Gérez et suivez toutes vos tâches</p>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+        <table class="w-full">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Tâche</th>
+                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Projet</th>
+                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Priorité</th>
+                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Statut</th>
+                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Échéance</th>
+                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Assigné</th>
+                    
+                </tr>
+            </thead>
+
+            <tbody class="divide-y divide-gray-100">
+            @foreach (var task in (Model ?? new List<TaskListViewModel>()))
+                {
+                    <tr class="hover:bg-gray-50 transition @(task.Status == "Completed" ? "bg-green-50" : "")">
+
+                        <!-- Title -->
+                        <td class="px-6 py-4">
+                            <a asp-action="Details" asp-route-id="@task.Id"
+                               class="font-medium @(task.Status == "Completed" ? "text-gray-400 line-through" : "text-gray-800 hover:text-indigo-600")">
+                                @task.Title
+                            </a>
+                        </td>
+
+                        <!-- Project -->
+                        <td class="px-6 py-4 text-gray-600">
+                            @task.ProjectName
+                        </td>
+
+                        <!-- Priority -->
+                        <td class="px-6 py-4">
+                            <span class="px-3 py-1 rounded-full text-sm
+                                @(task.Priority == "Urgent" ? "bg-red-100 text-red-700" :
+                                  task.Priority == "High" ? "bg-orange-100 text-orange-700" :
+                                  task.Priority == "Normal" || task.Priority == "Medium" ? "bg-blue-100 text-blue-700" :
+                                  task.Priority == "Low" ? "bg-gray-100 text-gray-600" :
+                                  "bg-blue-100 text-blue-700")">
+                                @(priorityTranslations.ContainsKey(task.Priority) ? 
+                                  priorityTranslations[task.Priority] : task.Priority)
+                            </span>
+                        </td>
+
+                        <!-- Status -->
+                        <td class="px-6 py-4">
+                            <span class="px-3 py-1 rounded-full text-sm
+                                @(task.Status == "Completed" ? "bg-green-100 text-green-700" :
+                                  task.Status == "InProgress" ? "bg-yellow-100 text-yellow-700" :
+                                  task.Status == "Review" ? "bg-purple-100 text-purple-700" :
+                                  task.Status == "NotStarted" ? "bg-blue-100 text-blue-700" :
+                                  "bg-gray-100 text-gray-700")">
+                                @(statusTranslations.ContainsKey(task.Status) ? 
+                                  statusTranslations[task.Status] : task.Status)
+                            </span>
+                        </td>
+
+                        <!-- Deadline -->
+                        <td class="px-6 py-4 text-gray-600">
+                            @task.Deadline.ToString("dd MMM yyyy")
+                        </td>
+
+                        <!-- Assigned -->
+                        <td class="px-6 py-4 flex items-center space-x-1">
+                            @if (task.AssignedMembers != null)
+                            {
+                                foreach (var member in task.AssignedMembers)
+                                {
+                                    <img src="@member.AvatarUrl"
+                                    title="@member.FullName"
+                                    class="w-8 h-8 rounded-full" />
+                                }
+                            }
+
+                            @if (task.RemainingAssignedCount > 0)
+                            {
+                                <span class="text-xs text-gray-500">
+                                    +@task.RemainingAssignedCount
+                                </span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Empty state -->
+    @if (!Model.Any())
+    {
+        <div class="text-center py-12 text-gray-500">
+            <i class="fas fa-tasks text-4xl mb-4"></i>
+            <p>Aucune tâche trouvée</p>
+        </div>
+    }
+</div>

@@ -1,0 +1,120 @@
+@model SmartCollab.Models.User
+@using SmartCollab.Models
+
+@{
+    ViewData["Title"] = "Mon Profil";
+    ViewData["Breadcrumb"] = new List<(string, string)> { ("Accueil", "/"), ("Mon Profil", "") };
+}
+
+<div class="max-w-4xl mx-auto space-y-6">
+    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+        <div class="h-32 bg-gradient-to-r from-indigo-500 to-purple-600"></div>
+        <div class="px-8 pb-8">
+            <div class="flex flex-col md:flex-row md:items-end -mt-16 space-y-4 md:space-y-0 md:space-x-6">
+                <div class="relative">
+                    <img src="@(
+                        string.IsNullOrEmpty(Model.ProfilePicturePath) 
+                        ? $"https://ui-avatars.com/api/?name={Model.FirstName}+{Model.LastName}&size=128&background=6366f1&color=fff" 
+                        : Url.Content(Model.ProfilePicturePath)
+                    )" 
+                        alt="Avatar" class="w-32 h-32 rounded-2xl border-4 border-white shadow-lg">
+                    <button class="absolute bottom-2 right-2 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center hover:bg-indigo-700 transition">
+                        <i class="fas fa-camera text-sm"></i>
+                    </button>
+                </div>
+                <div class="flex-1">
+                    <h1 class="text-2xl font-bold text-gray-800">@($"{Model.FirstName} {Model.LastName}")</h1>
+                    <p class="text-gray-600">@Model.Position</p>
+                    <p class="text-sm text-gray-500 mt-1">
+                        <i class="fas fa-map-marker-alt mr-1"></i> @Model.City, @Model.Country
+                        <span class="mx-2">•</span>
+                        <i class="fas fa-calendar mr-1"></i> Membre depuis @Model.CreatedAt.ToString("MMMM yyyy")
+                    </p>
+                </div>
+                <div class="flex space-x-3">
+                    <a href="/Profile/Edit" class="px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition font-medium">
+                        <i class="fas fa-edit mr-2"></i>Modifier
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistiques -->
+    <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl shadow-sm p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="font-semibold text-gray-800">Statistiques</h3>
+            </div>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <span class="text-gray-600">Projets actifs</span>
+                    <span class="font-bold text-indigo-600">@Model.ProjectMemberships.Count</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-gray-600">Tâches terminées</span>
+                    <span class="font-bold text-green-600">
+                        @Model.AssignedTasks.Count(t => t.Task.Status == SmartCollab.Models.TaskStatus.Completed)
+                    </span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-gray-600">Tâches en cours</span>
+                    <span class="font-bold text-orange-600">
+                        @Model.AssignedTasks.Count(t => t.Task.Status != SmartCollab.Models.TaskStatus.Completed)
+                    </span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-gray-600">Commentaires</span>
+                    <span class="font-bold text-blue-600">
+                        @Model.AssignedTasks.Sum(t => t.Task.Comments.Count)
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Infos perso -->
+        <div class="md:col-span-2 bg-white rounded-2xl shadow-sm p-6">
+            <h3 class="font-semibold text-gray-800 mb-4">Informations personnelles</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <label class="text-sm text-gray-500">E-mail</label>
+                    <p class="font-medium text-gray-800">@Model.Email</p>
+                </div>
+                <div>
+                    <label class="text-sm text-gray-500">Téléphone</label>
+                    <p class="font-medium text-gray-800">@Model.PhoneNumber</p>
+                </div>
+                <div>
+                    <label class="text-sm text-gray-500">Département</label>
+                    <p class="font-medium text-gray-800">@Model.Department</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="bg-white rounded-2xl shadow-sm p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="font-semibold text-gray-800">Actions rapides</h3>
+            </div>
+            <div class="space-y-3">
+                <a href="/Profile/ChangePassword" class="flex items-center p-3 rounded-xl hover:bg-gray-50 transition">
+                    <div class="w-10 h-10 bg-yellow-100 rounded-xl flex items-center justify-center mr-3">
+                        <i class="fas fa-key text-yellow-600"></i>
+                    </div>
+                    <span class="font-medium text-gray-700">Changer le mot de passe</span>
+                    <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+                </a>
+               
+                <a href="/Profile/Favorites" class="flex items-center p-3 rounded-xl hover:bg-gray-50 transition">
+                    <div class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center mr-3">
+                        <i class="fas fa-heart text-red-600"></i>
+                    </div>
+                    <span class="font-medium text-gray-700">Mes favoris</span>
+                    <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

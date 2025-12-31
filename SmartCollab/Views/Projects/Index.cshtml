@@ -1,0 +1,119 @@
+@using System.Security.Claims
+
+@model IEnumerable<SmartCollab.Models.Project>
+
+@{
+    ViewData["Title"] = "Projets";
+    ViewData["Breadcrumb"] = new List<(string, string)> { ("Accueil", "/"), ("Projets", "") };
+}
+
+<div class="space-y-6">
+    <div class="flex items-center justify-between">
+        <div>
+            <h1 class="text-2xl font-bold text-gray-800">Mes Projets</h1>
+            <p class="text-gray-600 mb-4">Gérez et suivez tous vos projets</p>
+        </div>
+        <div class="flex space-x-3">
+            <a href="/Projects/Archive" class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition font-medium">
+                <i class="fas fa-archive mr-2"></i>Archives
+            </a>
+            <a href="/Projects/Create" class="px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition font-medium">
+                <i class="fas fa-plus mr-2"></i>Nouveau projet
+            </a>
+        </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        @foreach (var project in Model)
+        {
+            <div class="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition group">
+                <div class="h-2" style="background-color:@project.Color"></div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center"
+                             style="background-color:@(project.Color + "20")">
+                            @* icône dynamique possible ici *@
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <form asp-action="ToggleFavorite" asp-route-projectId="@project.Id" method="post">
+                                <button type="submit" class="text-gray-400 hover:text-red-500 transition">
+                                    @if (project.Members.Any(pm => pm.UserId == User.FindFirstValue(System.Security.Claims.ClaimTypes.NameIdentifier) && pm.IsFavorite))
+                                    {
+                                        <i class="fas fa-heart"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="far fa-heart"></i>
+                                    }
+                                </button>
+                            </form>
+                            <div class="relative" x-data="{ open: false }">
+                                <button @@click="open = !open" class="text-gray-400 hover:text-gray-600">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div x-show="open" @@click.away="open = false" x-cloak class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-2 z-10">
+                                    <a asp-action="Edit" asp-route-id="@project.Id" class="block px-4 py-2 hover:bg-gray-100">
+                                        <i class="fas fa-edit mr-2"></i>Modifier
+                                    </a>
+                                    <a asp-action="InviteMember" asp-route-projectId="@project.Id" class="block px-4 py-2 hover:bg-gray-100">
+                                        <i class="fas fa-user-plus mr-2"></i>Inviter
+                                    </a>
+                                    <form asp-action="Archive" asp-route-id="@project.Id" method="post">
+                                        <button type="submit" class="w-full text-left block px-4 py-2 hover:bg-gray-100 text-red-600">
+                                            <i class="fas fa-archive mr-2"></i>Archiver
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a asp-action="Details" asp-route-id="@project.Id">
+                        <h3 class="font-bold text-gray-800 text-lg group-hover:text-indigo-600 transition">@project.Name</h3>
+                    </a>
+                    <p class="text-gray-600 text-sm mt-2 line-clamp-2">@project.Description</p>
+
+                    <div class="mt-4">
+                        <div class="flex items-center justify-between text-sm mb-2">
+                            <span class="text-gray-500">Progression</span>
+                            @{
+                                var totalTasks = project.Tasks.Count;
+                                var completedTasks = project.Tasks.Count(t => t.Status == SmartCollab.Models.TaskStatus.Completed);
+                                var progress = totalTasks == 0 ? 0 : (completedTasks * 100 / totalTasks);
+                            }
+                            <span class="font-medium text-indigo-600">@progress%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-indigo-600 h-2 rounded-full" style="width:@progress%"></div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 flex items-center justify-between">
+                        <div class="flex -space-x-2">
+                            @foreach (var member in project.Members.Take(3))
+                            {
+                                <img src="https://ui-avatars.com/api/?name=@(member.User.FirstName + "+" + member.User.LastName)&size=32&background=6366f1&color=fff" ... />
+                            }
+                            @if (project.Members.Count > 3)
+                            {
+                                <div class="w-8 h-8 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-xs font-medium text-gray-600">
+                                    +@((project.Members.Count) - 3)
+                                </div>
+                            }
+                        </div>
+                        <span class="text-sm text-gray-500">
+                            <i class="fas fa-tasks mr-1"></i> @completedTasks/@totalTasks
+                        </span>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <a href="/Projects/Create" class="bg-gray-100 border-2 border-dashed border-gray-300 rounded-2xl p-6 flex flex-col items-center justify-center hover:bg-gray-50 hover:border-indigo-300 transition min-h-[280px]">
+            <div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mb-4">
+                <i class="fas fa-plus text-gray-400 text-2xl"></i>
+            </div>
+            <p class="font-medium text-gray-600">Créer un nouveau projet</p>
+        </a>
+    </div>
+</div>

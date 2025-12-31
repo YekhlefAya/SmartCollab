@@ -1,0 +1,236 @@
+@model SmartCollab.Models.ProjectTaskDetailsViewModel
+
+@{
+    ViewData["Title"] = "Détails de la tâche";
+    ViewData["Breadcrumb"] = new List<(string, string)> { ("Accueil", "/"), ("Tâches", "/Tasks"), ($"{Model.Title}", "") };
+
+    // Dictionnaire de traduction pour Priority
+    var priorityTranslations = new Dictionary<string, string>
+    {
+        { "Low", "Basse" },
+        { "Medium", "Moyenne" },
+        { "High", "Haute" }
+    };
+
+    // Dictionnaire de traduction pour TaskStatus
+    var statusTranslations = new Dictionary<string, string>
+    {
+        { "NotStarted", "Non débuté" },
+        { "InProgress", "En cours" },
+        { "Completed", "Terminé" }
+    };
+}
+
+<div class="max-w-4xl mx-auto space-y-6">
+
+    <!-- Bloc principal de la tâche -->
+    <div class="bg-white rounded-2xl shadow-sm p-6">
+        <div class="flex items-start justify-between mb-4">
+            <div class="flex items-center space-x-3">
+                <!-- Badge de Priorité -->
+                <span class="px-3 py-1 @(
+                    Model.Priority == SmartCollab.Models.Priority.High ? "bg-red-100 text-red-700" :
+                    Model.Priority == SmartCollab.Models.Priority.Medium ? "bg-yellow-100 text-yellow-700" :
+                    "bg-green-100 text-green-700"
+                ) rounded-full text-sm font-medium">
+                    @(priorityTranslations.ContainsKey(Model.Priority.ToString()) ? 
+                      priorityTranslations[Model.Priority.ToString()] : Model.Priority.ToString())
+                </span>
+
+                <!-- Badge de Statut -->
+                <span class="px-3 py-1 @(
+                    Model.Status == SmartCollab.Models.TaskStatus.InProgress ? "bg-yellow-100 text-yellow-700" :
+                    Model.Status == SmartCollab.Models.TaskStatus.Completed ? "bg-green-100 text-green-700" :
+                    "bg-gray-100 text-gray-700"
+                ) rounded-full text-sm font-medium">
+                    @(statusTranslations.ContainsKey(Model.Status.ToString()) ? 
+                      statusTranslations[Model.Status.ToString()] : Model.Status.ToString())
+                </span>
+            </div>
+            
+            @if (Model.CanEdit || Model.CanDelete)
+            {
+                <div class="flex space-x-2">
+                    @if (Model.CanEdit)
+                    {
+                        <a asp-action="Edit"
+                           asp-route-id="@Model.Id"
+                           class="px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition text-sm font-medium flex items-center">
+                            <i class="fas fa-edit mr-2"></i>
+                            Modifier
+                        </a>
+                    }
+                    
+                    @if (Model.CanDelete)
+                    {
+                        <!-- Bouton de suppression avec modal de confirmation -->
+                    <button type="button" 
+                            onclick="showDeleteModal()"
+                            class="px-4 py-2 bg-red-600 text-white rounded-xl hover:bg-red-700 transition">
+                        <i class="fas fa-trash mr-2"></i>Supprimer
+                    </button>
+                    
+                    <!-- Modal de confirmation de suppression -->
+                    <div id="deleteModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden items-center justify-center z-50">
+                        <div class="bg-white rounded-2xl shadow-xl p-6 m-4 max-w-md w-full">
+                            <div class="flex items-center justify-center w-12 h-12 mx-auto bg-red-100 rounded-full">
+                                <i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-800 mt-4 text-center">Supprimer le projet</h3>
+                            <p class="text-gray-600 mt-2 text-center">
+                                Êtes-vous sûr de vouloir supprimer le projet <strong>@Model.Title
+</strong> ? 
+                                Cette action est irréversible.
+                            </p>
+                            <div class="flex justify-center space-x-3 mt-6">
+                                <button type="button" 
+                                        onclick="hideDeleteModal()"
+                                        class="px-6 py-2 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition">
+                                    Annuler
+                                </button>
+                                <form asp-action="Delete" asp-controller="projectTasks" method="post" asp-route-id="@Model.Id">
+                                     @Html.AntiForgeryToken()
+                                    <button type="submit" 
+                                            class="px-6 py-2 bg-red-600 text-white rounded-xl hover:bg-red-700 transition">
+                                        Supprimer
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            }
+        </div>
+
+        <h1 class="text-2xl font-bold text-gray-800 mb-2">@Model.Title</h1>
+        <p class="text-gray-600 mb-4">
+            <a asp-controller="Projects" asp-action="Details" asp-route-id="@Model.ProjectId" class="text-indigo-600 hover:underline">@Model.ProjectName</a>
+            <span class="mx-2">•</span>
+            Créé le @Model.Deadline.ToString("d MMMM yyyy")
+        </p>
+
+        <p class="text-gray-700 leading-relaxed">
+            @Model.Description
+        </p>
+    </div>
+
+    <!-- Bloc Commentaires -->
+    <div class="bg-white rounded-2xl shadow-sm p-6">
+        <h3 class="font-semibold text-gray-800 mb-4">Commentaires (@Model.Comments.Count)</h3>
+        <div class="space-y-4 mb-6">
+            @foreach (var comment in Model.Comments)
+            {
+                <div class="flex space-x-3">
+                    <img src="@comment.AvatarUrl" class="w-10 h-10 rounded-full">
+                    <div class="flex-1">
+                        <div class="bg-gray-50 rounded-xl p-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-medium text-gray-800">@comment.AuthorName</span>
+                                <span class="text-sm text-gray-500">@comment.CreatedAt.ToString("HH:mm dd/MM/yyyy")</span>
+                            </div>
+                            <p class="text-gray-700">@comment.Content</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="flex space-x-3">
+            <img src="https://ui-avatars.com/api/?name=@User.Identity.Name&size=40&background=6366f1&color=fff" class="w-10 h-10 rounded-full">
+            <div class="flex-1">
+                <textarea class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition resize-none" rows="2" placeholder="Ajouter un commentaire..."></textarea>
+                <div class="flex justify-end mt-2">
+                    <button class="px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition text-sm font-medium">
+                        <i class="fas fa-paper-plane mr-1"></i>Envoyer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bloc Détails -->
+    <div class="bg-white rounded-2xl shadow-sm p-6">
+        <h3 class="font-semibold text-gray-800 mb-4">Détails</h3>
+        <div class="space-y-4">
+            <div>
+                <label class="text-sm text-gray-500">Assigné à</label>
+                @foreach (var member in Model.AssignedMembers)
+                {
+                    <div class="flex items-center space-x-3 mt-1">
+                        <img src="@member.AvatarUrl" class="w-8 h-8 rounded-full">
+                        <span class="font-medium text-gray-800">@member.FullName</span>
+                    </div>
+                }
+            </div>
+            <div>
+                <label class="text-sm text-gray-500">Date d'échéance</label>
+                <p class="font-medium text-red-600 mt-1">
+                    <i class="fas fa-calendar mr-1"></i>@Model.Deadline.ToString("d MMMM yyyy") (@( (Model.Deadline - DateTime.UtcNow).Days ) jours restants)
+                </p>
+            </div>
+            <div>
+                <label class="text-sm text-gray-500">Projet</label>
+                <a asp-controller="Projects" asp-action="Details" asp-route-id="@Model.ProjectId" class="block font-medium text-indigo-600 hover:underline mt-1">
+                    <i class="fas fa-folder mr-1"></i>@Model.ProjectName
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de confirmation de suppression (ajouter à la fin) -->
+@if (Model.CanDelete)
+{
+    <div id="deleteModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-2xl shadow-xl p-6 m-4 max-w-md w-full">
+            <div class="flex items-center justify-center w-12 h-12 mx-auto bg-red-100 rounded-full">
+                <i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>
+            </div>
+            <h3 class="text-lg font-bold text-gray-800 mt-4 text-center">Supprimer la tâche</h3>
+            <p class="text-gray-600 mt-2 text-center">
+                Êtes-vous sûr de vouloir supprimer la tâche <strong>@Model.Title</strong> ? 
+                Cette action est irréversible.
+            </p>
+            <div class="flex justify-center space-x-3 mt-6">
+                <button type="button" 
+                        onclick="hideDeleteModal()"
+                        class="px-6 py-2 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition">
+                    Annuler
+                </button>
+                <form asp-action="Delete" asp-controller="ProjectTasks" method="post" asp-route-id="@Model.Id">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" 
+                            class="px-6 py-2 bg-red-600 text-white rounded-xl hover:bg-red-700 transition">
+                        Supprimer
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showDeleteModal() {
+            document.getElementById('deleteModal').classList.remove('hidden');
+            document.getElementById('deleteModal').classList.add('flex');
+        }
+        
+        function hideDeleteModal() {
+            document.getElementById('deleteModal').classList.add('hidden');
+            document.getElementById('deleteModal').classList.remove('flex');
+        }
+        
+        // Fermer la modal en cliquant en dehors
+        document.getElementById('deleteModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideDeleteModal();
+            }
+        });
+        
+        // Fermer avec la touche Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                hideDeleteModal();
+            }
+        });
+    </script>
+}

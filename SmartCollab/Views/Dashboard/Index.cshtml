@@ -1,0 +1,126 @@
+@model SmartCollab.Models.DashboardViewModel
+
+<div class="p-6 bg-gray-100 min-h-screen">
+
+    <!-- 1️⃣ Header -->
+    <div class="mb-6">
+        <h1 class="text-2xl font-bold text-gray-800">Bonjour, @Model.UserFullName !</h1>
+        <p class="text-gray-600">Voici un aperçu de votre activité aujourd'hui</p>
+    </div>
+
+    <!-- 2️⃣ Cartes statistiques -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+        <div class="p-4 bg-white rounded-xl shadow flex flex-col items-center">
+            <div class="text-4xl font-bold text-gray-800">@Model.ActiveProjectsCount</div>
+            <p class="text-gray-500 mt-2">Projets actifs</p>
+        </div>
+        <div class="p-4 bg-white rounded-xl shadow flex flex-col items-center">
+            <div class="text-4xl font-bold text-gray-800">@Model.OngoingTasksCount</div>
+            <p class="text-gray-500 mt-2">Tâches en cours</p>
+        </div>
+        <div class="p-4 bg-white rounded-xl shadow flex flex-col items-center">
+            <div class="text-4xl font-bold text-gray-800">@Model.CompletedTasksCount</div>
+            <p class="text-gray-500 mt-2">Tâches terminées</p>
+        </div>
+        <div class="p-4 bg-white rounded-xl shadow flex flex-col items-center">
+            <div class="text-4xl font-bold text-gray-800">@Model.TeamMembersCount</div>
+            <p class="text-gray-500 mt-2">Membres de l'équipe</p>
+        </div>
+    </div>
+
+    <!-- 3️⃣ Tâches du jour -->
+    <div class="mb-6">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Tâches du jour</h2>
+        @if (Model.TodayTasks.Any())
+        {
+            <div class="space-y-4">
+                @foreach (var task in Model.TodayTasks)
+                {
+                    <div class="flex items-center p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition">
+                        <input type="checkbox" class="w-5 h-5 text-indigo-600 rounded mr-4" @(task.Status == SmartCollab.Models.TaskStatus.Completed ? "checked" : "") />
+                        <div class="flex-1">
+                            <p class="font-medium text-gray-800 @(task.Status == SmartCollab.Models.TaskStatus.Completed ? "line-through text-gray-400" : "")">@task.Title</p>
+                            <p class="text-sm text-gray-500">@task.Project.Name</p>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-sm
+                                    @(task.Priority == SmartCollab.Models.Priority.High ? "bg-red-100 text-red-700" :
+                                                            task.Priority == SmartCollab.Models.Priority.Medium ? "bg-orange-100 text-orange-700" :
+                                                            "bg-blue-100 text-blue-700")">
+                            @task.Priority
+                        </span>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-gray-500">Aucune tâche pour aujourd'hui.</p>
+        }
+    </div>
+
+    
+    <!-- 5️⃣ Projets récents -->
+    <div class="mb-6">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Projets récents</h2>
+        @if (Model.RecentProjects.Any())
+        {
+            <div class="space-y-4">
+                @foreach (var project in Model.RecentProjects)
+                {
+                    <a href="/Projects/Details/@project.Id" class="flex items-center p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition">
+                        <div class="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-globe text-indigo-600"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="font-medium text-gray-800">@project.Name</p>
+                            <div class="flex items-center mt-1">
+                                <div class="w-32 bg-gray-200 rounded-full h-2 mr-2">
+                                    <div class="bg-indigo-600 h-2 rounded-full" style="width:@(project.Tasks.Any() ? project.Tasks.Count(t => t.Status == SmartCollab.Models.TaskStatus.Completed) * 100 / project.Tasks.Count() : 0)%"></div>
+                                </div>
+                                <span class="text-xs text-gray-500">
+                                    @(project.Tasks.Any() ? project.Tasks.Count(t => t.Status == SmartCollab.Models.TaskStatus.Completed) * 100 / project.Tasks.Count() : 0)%
+                                </span>
+                            </div>
+                        </div>
+                        <span class="text-sm text-gray-500">@project.Members.Count membres</span>
+                    </a>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-gray-500">Aucun projet récent.</p>
+        }
+    </div>
+
+    <!-- 6️⃣ Tâches à venir -->
+    <div>
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Tâches à venir</h2>
+        @if (Model.UpcomingTasks.Any())
+        {
+            <div class="space-y-4">
+                @foreach (var task in Model.UpcomingTasks)
+                {
+                    <div class="flex items-center p-4 border-l-4 @(task.Priority == SmartCollab.Models.Priority.High ? "border-red-500 bg-red-50" :
+                                                                                      task.Priority == SmartCollab.Models.Priority.Medium ? "border-orange-500 bg-orange-50" :
+                                                                                      "border-blue-500 bg-blue-50") rounded-r-xl">
+                        <div class="flex-1">
+                            <p class="font-medium text-gray-800">@task.Title</p>
+                            <p class="text-sm text-gray-500">@task.Project.Name</p>
+                        </div>
+                        <span class="text-sm font-medium @(task.Priority == SmartCollab.Models.Priority.High ? "text-red-600" :
+                                                                                       task.Priority == SmartCollab.Models.Priority.Medium ? "text-orange-600" :
+                                                                                       "text-blue-600")">
+                            @(task.Deadline.ToLocalTime().ToString("MMM dd"))
+                        </span>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-gray-500">Aucune tâche à venir.</p>
+        }
+    </div>
+
+</div>

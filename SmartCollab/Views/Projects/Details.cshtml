@@ -1,0 +1,316 @@
+@using SmartCollab.Models
+@using System.Linq
+
+@{
+    ViewData["Title"] = Model.Name;
+    ViewData["Breadcrumb"] = new List<(string, string)>
+    {
+        ("Accueil", "/"),
+        ("Projets", "/Projects"),
+        (Model.Name, "")
+    };
+
+    // Dictionnaire des couleurs
+    var colors = new Dictionary<string, string>
+    {
+        { "indigo", "bg-indigo-500 peer-checked:ring-indigo-200" },
+        { "purple", "bg-purple-500 peer-checked:ring-purple-200" },
+        { "green", "bg-green-500 peer-checked:ring-green-200" },
+        { "orange", "bg-orange-500 peer-checked:ring-orange-200" },
+        { "red", "bg-red-500 peer-checked:ring-red-200" },
+        { "blue", "bg-blue-500 peer-checked:ring-blue-200" }
+    };
+
+    // Récupérer la classe de couleur basée sur la couleur du projet
+    var projectColor = Model.Color ?? "indigo"; // Par défaut indigo si non spécifié
+    var colorClass = colors.ContainsKey(projectColor) ? colors[projectColor] : colors["indigo"];
+
+    // Extraire juste le nom de la couleur (sans les classes tailwind)
+    var colorName = colorClass.Split(' ')[0].Split('-')[1]; // Ex: "indigo" de "bg-indigo-500"
+
+    // Classes pour l'arrière-plan (bg-{color}-100) et l'icône (text-{color}-600)
+    var bgClass = $"bg-{colorName}-100";
+    var textClass = $"text-{colorName}-600";
+}
+<div class="flex justify-end mt-4 mb-4">
+    @if (Model.UserRole == "Owner" || Model.UserRole == "Manager")
+    {
+        <a asp-action="Create" asp-controller="ProjectTasks" 
+           asp-route-projectId="@Model.Id"
+           class="px-4 py-2 bg-@colorName-600 text-white rounded-xl hover:bg-@colorName-700 transition font-medium shadow">
+            <i class="fas fa-plus mr-2"></i>Nouvelle tâche
+        </a>
+    }
+</div>
+
+
+<div class="space-y-6">
+    <div class="bg-white rounded-2xl shadow-sm p-6">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div class="flex items-center space-x-4">
+                <div class="w-16 h-16 @bgClass rounded-2xl flex items-center justify-center">
+                    <i class="fa-solid fa-folder @textClass text-2xl"></i>
+                </div>
+                <div>
+                    <div class="flex items-center space-x-3">
+                        <h1 class="text-2xl font-bold text-gray-800">@Model.Name</h1>
+                        <span class="px-3 py-1 rounded-full text-sm font-medium
+                        @(Model.Status == "InProgress" ? "bg-green-100 text-green-700" :
+                                                                                      Model.Status == "Completed" ? "bg-gray-100 text-gray-700" : "bg-yellow-100 text-yellow-700")">
+                            @(Model.Status == "InProgress" ? "En cours" :
+                                                        Model.Status == "Completed" ? "Terminé" : "Non débuté")
+                        </span>
+                    </div>
+                    <p class="text-gray-600 mt-1">Créé le @Model.StartDate.ToString("d MMMM yyyy")</p>
+                </div>
+            </div>
+            <div class="flex space-x-3">
+                <form asp-action="ToggleFavorite" method="post" asp-route-projectId="@Model.Id">
+                    <button type="submit" class="px-4 py-2 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition">
+                        <i class="far @(Model.IsFavorite ? "fa-heart" : "fa-heart") mr-2"></i>
+                        @(Model.IsFavorite ? "Favoris" : "Ajouter aux favoris")
+                    </button>
+                </form>
+
+                @if (Model.UserRole == "Owner")
+                {
+                    <a href="@Url.Action("InviteMember", "Projects", new { projectId = Model.Id })"
+                       class="px-4 py-2 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition">
+                        <i class="fas fa-user-plus mr-2"></i>Inviter
+                    </a>
+                    <a href="@Url.Action("Edit", "Projects", new { id = Model.Id })"
+                       class="px-4 py-2 bg-@colorName-600 text-white rounded-xl hover:bg-@colorName-700 transition">
+                        <i class="fas fa-edit mr-2"></i>Modifier
+                    </a>
+                    
+                    <!-- Bouton de suppression avec modal de confirmation -->
+                    <button type="button" 
+                            onclick="showDeleteModal()"
+                            class="px-4 py-2 bg-red-600 text-white rounded-xl hover:bg-red-700 transition">
+                        <i class="fas fa-trash mr-2"></i>Supprimer
+                    </button>
+                    
+                    <!-- Modal de confirmation de suppression -->
+                    <div id="deleteModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden items-center justify-center z-50">
+                        <div class="bg-white rounded-2xl shadow-xl p-6 m-4 max-w-md w-full">
+                            <div class="flex items-center justify-center w-12 h-12 mx-auto bg-red-100 rounded-full">
+                                <i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-800 mt-4 text-center">Supprimer le projet</h3>
+                            <p class="text-gray-600 mt-2 text-center">
+                                Êtes-vous sûr de vouloir supprimer le projet <strong>@Model.Name</strong> ? 
+                                Cette action est irréversible.
+                            </p>
+                            <div class="flex justify-center space-x-3 mt-6">
+                                <button type="button" 
+                                        onclick="hideDeleteModal()"
+                                        class="px-6 py-2 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition">
+                                    Annuler
+                                </button>
+                                <form asp-action="Delete" asp-controller="Projects" method="post" asp-route-id="@Model.Id">
+                                     @Html.AntiForgeryToken()
+                                    <button type="submit" 
+                                            class="px-6 py-2 bg-red-600 text-white rounded-xl hover:bg-red-700 transition">
+                                        Supprimer
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <script>
+                        function showDeleteModal() {
+                            document.getElementById('deleteModal').classList.remove('hidden');
+                            document.getElementById('deleteModal').classList.add('flex');
+                        }
+                        
+                        function hideDeleteModal() {
+                            document.getElementById('deleteModal').classList.add('hidden');
+                            document.getElementById('deleteModal').classList.remove('flex');
+                        }
+                        
+                        // Fermer la modal en cliquant en dehors
+                        document.getElementById('deleteModal').addEventListener('click', function(e) {
+                            if (e.target === this) {
+                                hideDeleteModal();
+                            }
+                        });
+                        
+                        // Fermer avec la touche Escape
+                        document.addEventListener('keydown', function(e) {
+                            if (e.key === 'Escape') {
+                                hideDeleteModal();
+                            }
+                        });
+                    </script>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 space-y-6">
+            <!-- Description -->
+            <div class="bg-white rounded-2xl shadow-sm p-6">
+                <h3 class="font-semibold text-gray-800 mb-4">Description</h3>
+                <p class="text-gray-600">@Model.Description</p>
+            </div>
+
+            <!-- Tâches récentes -->
+            <div class="bg-white rounded-2xl shadow-sm p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-semibold text-gray-800">Tâches récentes</h3>
+                    <a href="@Url.Action("Index", "ProjectTasks", new { project = Model.Id })"
+                       class="text-@colorName-600 hover:text-@colorName-800 text-sm font-medium">Voir tout</a>
+                </div>
+                <div class="space-y-3">
+                    @foreach (var task in Model.RecentTasks)
+                    {
+
+                        <div class="flex items-center p-4 bg-gray-50 rounded-xl">
+                            <input type="checkbox" class="w-5 h-5 text-@colorName-600 rounded mr-4" @(task.Status == SmartCollab.Models.TaskStatus.Completed ? "checked" : "")>
+                            <div class="flex-1">
+                                <p class="font-medium @(task.Status == SmartCollab.Models.TaskStatus.Completed ? "text-gray-400 line-through" : "text-gray-800")">
+                                    @task.Title
+                                </p>
+                                <div class="flex items-center space-x-3 mt-1 text-sm text-gray-500">
+                                    <span>
+                                        <i class="fas fa-user mr-1"></i>
+                                        @string.Join(", ", task.AssignedMemberNames)
+                                    </span>
+
+                                    <span>
+                                        <i class="fas @(task.Status == SmartCollab.Models.TaskStatus.Completed ? "fa-check" : "fa-calendar") mr-1"></i>
+                                        @(task.Status == SmartCollab.Models.TaskStatus.Completed ? "Terminé" : task.Deadline.ToString("d MMM"))
+                                    </span>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-sm
+                                              @(task.Priority == Priority.High ? "bg-red-100 text-red-700" :
+                                                                                                                                          task.Priority == Priority.Medium ? "bg-yellow-100 text-yellow-700" : "bg-green-100 text-green-700")">
+                                @task.Priority
+                            </span>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Fichiers récents -->
+            <div class="bg-white rounded-2xl shadow-sm p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-semibold text-gray-800">Fichiers récents</h3>
+                    <a href="@Url.Action("Index", "Files", new { project = Model.Id })"
+                       class="text-@colorName-600 hover:text-@colorName-800 text-sm font-medium">Voir tout</a>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    @foreach (var file in Model.RecentFiles)
+                    {
+                        <div class="p-4 bg-gray-50 rounded-xl text-center hover:bg-gray-100 transition cursor-pointer">
+                            @{
+                                var extension = System.IO.Path.GetExtension(file.Name).ToLower();
+                                string iconClass = extension switch
+                                {
+                                    ".pdf" => "fa-file-pdf text-red-500",
+                                    ".xls" or ".xlsx" => "fa-file-excel text-green-500",
+                                    ".doc" or ".docx" => "fa-file-word text-blue-500",
+                                    ".fig" => "fa-file-image text-purple-500",
+                                    _ => "fa-file text-gray-500"
+                                };
+                            }
+                            <i class="fas @iconClass text-3xl mb-2"></i>
+                            <p class="text-sm font-medium text-gray-700 truncate">@file.Name</p>
+                            <p class="text-xs text-gray-500">@file.Size</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="space-y-6">
+            <!-- Progression -->
+            <div class="bg-white rounded-2xl shadow-sm p-6">
+                <h3 class="font-semibold text-gray-800 mb-4">Progression</h3>
+                <div class="text-center mb-4">
+                    <div class="inline-flex items-center justify-center w-24 h-24 rounded-full border-8 border-@colorName-100">
+                        <span class="text-2xl font-bold text-@colorName-600">
+                            @(Model.TotalTasksCount == 0 ? "0%" : (Model.CompletedTasksCount * 100 / Model.TotalTasksCount) + "%")
+                        </span>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600">Tâches terminées</span>
+                        <span class="font-medium">@Model.CompletedTasksCount/@Model.TotalTasksCount</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600">En retard</span>
+                        <span class="font-medium text-red-600">@Model.OverdueTasksCount</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600">Jours restants</span>
+                        <span class="font-medium">@Model.DaysRemaining</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Équipe -->
+            <div class="bg-white rounded-2xl shadow-sm p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-semibold text-gray-800">Équipe</h3>
+                    <span class="text-sm text-gray-500">@Model.TeamMembers.Count membres</span>
+                </div>
+                <div class="space-y-3">
+                    @foreach (var member in Model.TeamMembers)
+                    {
+                        <div class="flex items-center space-x-3">
+                            <img src="@($"https://ui-avatars.com/api/?name={member.FullName}&size=40&background=6366f1&color=fff")" class="w-10 h-10 rounded-full">
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-800">@member.FullName</p>
+                                <p class="text-sm text-gray-500">@member.Role</p>
+                            </div>
+                            @if (member.Role == "Owner")
+                            {
+                                <span class="px-2 py-1 bg-@colorName-100 text-@colorName-700 text-xs rounded-full">Admin</span>
+                            }
+                        </div>
+                    }
+
+                    @if (Model.UserRole == "Owner")
+                    {
+                        <a href="@Url.Action("InviteMember", "Projects", new { projectId = Model.Id })"
+                           class="flex items-center justify-center p-3 border-2 border-dashed border-gray-300 rounded-xl text-gray-500 hover:border-@colorName-300 hover:text-@colorName-600 transition">
+                            <i class="fas fa-plus mr-2"></i>Ajouter un membre
+                        </a>
+                    }
+                </div>
+            </div>
+
+            <!-- Dates clés -->
+            <div class="bg-white rounded-2xl shadow-sm p-6">
+                <h3 class="font-semibold text-gray-800 mb-4">Dates clés</h3>
+                <div class="space-y-3">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-play text-green-600"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium text-gray-800">Début</p>
+                            <p class="text-sm text-gray-500">@Model.StartDate.ToString("d MMMM yyyy")</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-stop text-red-600"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium text-gray-800">Fin prévue</p>
+                            <p class="text-sm text-gray-500">@Model.EndDate.ToString("d MMMM yyyy")</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

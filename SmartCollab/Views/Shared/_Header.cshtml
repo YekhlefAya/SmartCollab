@@ -1,0 +1,48 @@
+@using Microsoft.AspNetCore.Identity
+@using SmartCollab.Models
+@inject UserManager<User> UserManager
+
+@functions {
+    public string GetUserFullName(User user) => 
+        user != null ? $"{user.FirstName} {user.LastName}" : "Utilisateur";
+    
+    public string GetUserAvatar(User user) =>
+        user != null 
+            ? $"https://ui-avatars.com/api/?name={user.FirstName}+{user.LastName}&background=6366f1&color=fff" 
+            : "https://ui-avatars.com/api/?name=U+N&background=6366f1&color=fff";
+}
+
+@{
+    var currentUser = await UserManager.GetUserAsync(User);
+    var userFullName = GetUserFullName(currentUser);
+    var avatarUrl = GetUserAvatar(currentUser);
+}
+
+<header class="bg-white border-b border-gray-200 px-6 py-4">
+    <div class="flex items-center justify-between">
+        <div class="flex items-center gap-4">
+            <button class="lg:hidden p-2 rounded-lg hover:bg-gray-100">
+                <i class="fas fa-bars text-gray-600"></i>
+            </button>
+            
+            <div class="relative">
+                <input type="text" placeholder="Rechercher..." class="w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition" />
+                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+            </div>
+        </div>
+        
+        <div class="flex items-center gap-4">
+            <div x-data="{ open: false }" class="relative">
+                <button @@click="open = !open" class="flex items-center gap-2 p-2 rounded-xl hover:bg-gray-100 transition">
+                    <img src="@avatarUrl" alt="Avatar" class="w-8 h-8 rounded-full" />
+                    <span class="hidden md:block text-sm font-medium text-gray-700">@userFullName</span>
+                    <i class="fas fa-chevron-down text-gray-400 text-xs"></i>
+                </button>
+                
+                <div x-show="open" @@click.away="open = false" x-cloak class="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-200 z-50">
+                    @await Html.PartialAsync("_UserMenuDropdown", currentUser)
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

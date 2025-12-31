@@ -1,0 +1,116 @@
+@{
+    ViewData["Title"] = "Préférences de notification";
+    ViewData["Breadcrumb"] = new List<(string, string)> { ("Accueil", "/"), ("Mon Profil", "/Profile"), ("Notifications", "") };
+}
+
+<div class="max-w-3xl mx-auto">
+    <div class="bg-white rounded-2xl shadow-sm p-8">
+        <div class="mb-6">
+            <h2 class="text-xl font-bold text-gray-800">Préférences de notification</h2>
+            <p class="text-gray-600 mt-1">Gérez comment et quand vous souhaitez recevoir des notifications</p>
+        </div>
+        
+        <form method="post" asp-action="Notifications" asp-controller="Profile" x-data="{ emailDigest: 'daily' }">
+            <div class="space-y-8">
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-envelope text-indigo-500 mr-2"></i>
+                        Notifications par e-mail
+                    </h3>
+                    <div class="space-y-4">
+                        <label class="flex items-center justify-between p-4 bg-gray-50 rounded-xl cursor-pointer hover:bg-gray-100 transition">
+                            <div>
+                                <p class="font-medium text-gray-700">Nouvelles tâches assignées</p>
+                                <p class="text-sm text-gray-500">Recevoir un e-mail quand une tâche vous est assignée</p>
+                            </div>
+                            <input type="checkbox" name="emailNewTask" checked class="w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500">
+                        </label>
+                        <label class="flex items-center justify-between p-4 bg-gray-50 rounded-xl cursor-pointer hover:bg-gray-100 transition">
+                            <div>
+                                <p class="font-medium text-gray-700">Commentaires sur mes tâches</p>
+                                <p class="text-sm text-gray-500">Recevoir un e-mail pour chaque nouveau commentaire</p>
+                            </div>
+                            <input type="checkbox" name="emailComments" checked class="w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500">
+                        </label>
+                        <label class="flex items-center justify-between p-4 bg-gray-50 rounded-xl cursor-pointer hover:bg-gray-100 transition">
+                            <div>
+                                <p class="font-medium text-gray-700">Mentions</p>
+                                <p class="text-sm text-gray-500">Recevoir un e-mail quand quelqu'un vous mentionne</p>
+                            </div>
+                            <input type="checkbox" name="emailMentions" checked class="w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500">
+                        </label>
+                        <label class="flex items-center justify-between p-4 bg-gray-50 rounded-xl cursor-pointer hover:bg-gray-100 transition">
+                            <div>
+                                <p class="font-medium text-gray-700">Rappels d'échéance</p>
+                                <p class="text-sm text-gray-500">Rappel 24h avant la date limite d'une tâche</p>
+                            </div>
+                            <input type="checkbox" name="emailDeadlines" checked class="w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500">
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-bell text-indigo-500 mr-2"></i>
+                        Notifications dans l'application
+                    </h3>
+                    <div class="space-y-4">
+                        <label class="flex items-center justify-between p-4 bg-gray-50 rounded-xl cursor-pointer hover:bg-gray-100 transition">
+                            <div>
+                                <p class="font-medium text-gray-700">Notifications push</p>
+                                <p class="text-sm text-gray-500">Afficher les notifications en temps réel</p>
+                            </div>
+                            <input type="checkbox" name="pushEnabled" checked class="w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500">
+                        </label>
+                        <label class="flex items-center justify-between p-4 bg-gray-50 rounded-xl cursor-pointer hover:bg-gray-100 transition">
+                            <div>
+                                <p class="font-medium text-gray-700">Son de notification</p>
+                                <p class="text-sm text-gray-500">Jouer un son pour les nouvelles notifications</p>
+                            </div>
+                            <input type="checkbox" name="soundEnabled" class="w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500">
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-newspaper text-indigo-500 mr-2"></i>
+                        Résumé par e-mail
+                    </h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <label class="relative cursor-pointer">
+                            <input type="radio" name="emailDigest" value="never" class="peer sr-only" x-model="emailDigest">
+                            <div class="p-4 bg-gray-50 rounded-xl border-2 border-transparent peer-checked:border-indigo-500 peer-checked:bg-indigo-50 hover:bg-gray-100 transition text-center">
+                                <i class="fas fa-times-circle text-2xl text-gray-400 peer-checked:text-indigo-600 mb-2"></i>
+                                <p class="font-medium text-gray-700">Jamais</p>
+                            </div>
+                        </label>
+                        <label class="relative cursor-pointer">
+                            <input type="radio" name="emailDigest" value="daily" class="peer sr-only" x-model="emailDigest" checked>
+                            <div class="p-4 bg-gray-50 rounded-xl border-2 border-transparent peer-checked:border-indigo-500 peer-checked:bg-indigo-50 hover:bg-gray-100 transition text-center">
+                                <i class="fas fa-calendar-day text-2xl text-gray-400 peer-checked:text-indigo-600 mb-2"></i>
+                                <p class="font-medium text-gray-700">Quotidien</p>
+                            </div>
+                        </label>
+                        <label class="relative cursor-pointer">
+                            <input type="radio" name="emailDigest" value="weekly" class="peer sr-only" x-model="emailDigest">
+                            <div class="p-4 bg-gray-50 rounded-xl border-2 border-transparent peer-checked:border-indigo-500 peer-checked:bg-indigo-50 hover:bg-gray-100 transition text-center">
+                                <i class="fas fa-calendar-week text-2xl text-gray-400 peer-checked:text-indigo-600 mb-2"></i>
+                                <p class="font-medium text-gray-700">Hebdo</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="flex justify-end space-x-4 pt-4 border-t">
+                    <a href="/Profile" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition font-medium">
+                        Annuler
+                    </a>
+                    <button type="submit" class="px-6 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition font-medium">
+                        <i class="fas fa-save mr-2"></i>Enregistrer
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

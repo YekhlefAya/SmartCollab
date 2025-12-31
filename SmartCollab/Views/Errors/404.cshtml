@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Page non trouvée";
+    Layout = "_AuthLayout";
+}
+
+<div class="bg-white rounded-2xl shadow-xl p-8 text-center">
+    <div class="inline-flex items-center justify-center w-20 h-20 bg-orange-100 rounded-full mb-6">
+        <i class="fas fa-search text-orange-600 text-3xl"></i>
+    </div>
+    <h1 class="text-6xl font-bold text-gray-800 mb-2">404</h1>
+    <h2 class="text-xl font-semibold text-gray-700 mb-4">Page non trouvée</h2>
+    <p class="text-gray-600 mb-8">Oups ! La page que vous recherchez n'existe pas ou a été déplacée.</p>
+    
+    <div class="space-y-3">
+        <a href="/" class="block w-full bg-indigo-600 text-white py-3 px-4 rounded-xl font-semibold hover:bg-indigo-700 transition">
+            <i class="fas fa-home mr-2"></i>Retour à l'accueil
+        </a>
+        <a href="/Search" class="block w-full bg-gray-100 text-gray-700 py-3 px-4 rounded-xl font-semibold hover:bg-gray-200 transition">
+            <i class="fas fa-search mr-2"></i>Rechercher
+        </a>
+    </div>
+    
+    <div class="mt-8 p-4 bg-gray-50 rounded-xl">
+        <p class="text-sm text-gray-500 mb-2">Liens utiles :</p>
+        <div class="flex justify-center space-x-4 text-sm">
+            <a href="/Dashboard" class="text-indigo-600 hover:underline">Tableau de bord</a>
+            <a href="/Projects" class="text-indigo-600 hover:underline">Projets</a>
+            <a href="/Tasks" class="text-indigo-600 hover:underline">Tâches</a>
+        </div>
+    </div>
+</div>

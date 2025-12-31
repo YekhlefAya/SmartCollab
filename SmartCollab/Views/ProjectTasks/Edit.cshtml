@@ -1,0 +1,133 @@
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using SmartCollab.Models
+
+@model ProjectTaskCreateViewModel
+
+@{
+    ViewData["Title"] = "Modifier la tâche";
+    ViewData["Breadcrumb"] = new List<(string, string)>
+    {
+        ("Accueil", "/"),
+        ("Tâches", "/Tasks"),
+        (Model.Title, Url.Action("Details", "ProjectTasks", new { id = Model.Id })),
+        ("Modifier", "")
+    };
+
+    var priorityTranslations = new Dictionary<string, string>
+    {
+        { "Low", "Basse" },
+        { "Medium", "Moyenne" },
+        { "High", "Haute" }
+    };
+
+    var statusTranslations = new Dictionary<string, string>
+    {
+        { "NotStarted", "Non débuté" },
+        { "InProgress", "En cours" },
+        { "Completed", "Terminé" }
+    };
+
+    var priorityList = Enum.GetValues(typeof(Priority))
+        .Cast<Priority>()
+        .Select(p => new SelectListItem
+        {
+            Value = p.ToString(),
+            Text = priorityTranslations[p.ToString()],
+            Selected = p == Model.Priority
+        }).ToList();
+
+    var statusList = Enum.GetValues(typeof( SmartCollab.Models.TaskStatus))
+        .Cast< SmartCollab.Models.TaskStatus>()
+        .Where(s => statusTranslations.ContainsKey(s.ToString()))
+        .Select(s => new SelectListItem
+        {
+            Value = s.ToString(),
+            Text = statusTranslations[s.ToString()],
+            Selected = s == Model.Status
+        }).ToList();
+}
+
+<div class="max-w-3xl mx-auto">
+    <div class="bg-white rounded-2xl shadow-sm p-8">
+        <h2 class="text-xl font-bold text-gray-800 mb-6">Modifier la tâche</h2>
+
+        <form method="post" asp-action="Edit" asp-controller="ProjectTasks">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="ProjectId" />
+
+            <div class="space-y-6">
+
+                <!-- Titre -->
+                <div>
+                    <label asp-for="Title" class="block text-sm font-medium text-gray-700 mb-2">Titre *</label>
+                    <input asp-for="Title" required
+                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 transition">
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <label asp-for="Description" class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                    <textarea asp-for="Description" rows="4"
+                              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 resize-none"></textarea>
+                </div>
+
+                <!-- Assignation multiple -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Assigné à</label>
+                    <div class="space-y-2">
+                        @foreach (var member in Model.ProjectMembers)
+                        {
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox"
+                                       name="AssignedUserIds"
+                                       value="@member.UserId"
+                                       class="w-5 h-5 text-indigo-600 rounded"
+                                       @(Model.AssignedUserIds.Contains(member.UserId) ? "checked" : "") />
+                                <span>@member.FullName</span>
+                            </label>
+                        }
+                    </div>
+                </div>
+
+                <!-- Deadline + Priority -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label asp-for="Deadline" class="block text-sm font-medium text-gray-700 mb-2">Date d’échéance</label>
+                        <input asp-for="Deadline" type="date"
+                               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500">
+                    </div>
+
+                    <div>
+                        <label asp-for="Priority" class="block text-sm font-medium text-gray-700 mb-2">Priorité</label>
+                        <select asp-for="Priority" asp-items="priorityList"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500">
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Statut -->
+                <div>
+                    <label asp-for="Status" class="block text-sm font-medium text-gray-700 mb-2">Statut</label>
+                    <select asp-for="Status" asp-items="statusList"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500">
+                    </select>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex justify-end space-x-4 pt-4 border-t">
+                    <a asp-action="Details"
+                       asp-route-id="@Model.Id"
+                       class="px-6 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 font-medium">
+                        Annuler
+                    </a>
+
+                    <button type="submit"
+                            class="px-6 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 font-medium">
+                        <i class="fas fa-save mr-2"></i>Enregistrer
+                    </button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,104 @@
+@using SmartCollab.Models
+@model SmartCollab.Models.Project
+@{
+    ViewData["Title"] = "Modifier le projet";
+    ViewData["Breadcrumb"] = new List<(string, string)>
+    {
+        ("Accueil", "/"),
+        ("Projets", "/Projects"),
+        (Model.Name, $"/Projects/Details/{Model.Id}"),
+        ("Modifier", "")
+    };
+}
+@{
+    var colors = new Dictionary<string, string>
+    {
+        { "indigo", "bg-indigo-500 peer-checked:ring-indigo-200" },
+        { "purple", "bg-purple-500 peer-checked:ring-purple-200" },
+        { "green", "bg-green-500 peer-checked:ring-green-200" },
+        { "orange", "bg-orange-500 peer-checked:ring-orange-200" },
+        { "red", "bg-red-500 peer-checked:ring-red-200" },
+        { "blue", "bg-blue-500 peer-checked:ring-blue-200" }
+    };
+}
+<div class="max-w-3xl mx-auto">
+    <div class="bg-white rounded-2xl shadow-sm p-8">
+        <h2 class="text-xl font-bold text-gray-800 mb-6">Modifier le projet</h2>
+
+        <form method="post" asp-action="Edit" asp-controller="Projects">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="space-y-6">
+                <div>
+                    <label asp-for="Name" class="block text-sm font-medium text-gray-700 mb-2">Nom du projet *</label>
+                    <input type="text" asp-for="Name" required
+                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition">
+                </div>
+
+                <div>
+                    <label asp-for="Description" class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                    <textarea asp-for="Description" rows="4"
+                              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition resize-none"></textarea>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label asp-for="StartDate" class="block text-sm font-medium text-gray-700 mb-2">Date de début</label>
+                        <input type="date" asp-for="StartDate"
+                               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition">
+                    </div>
+                    <div>
+                        <label asp-for="EndDate" class="block text-sm font-medium text-gray-700 mb-2">Date de fin prévue</label>
+                        <input type="date" asp-for="EndDate"
+                               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition">
+                    </div>
+                </div>
+
+                <div>
+                    <label asp-for="Status" class="block text-sm font-medium text-gray-700 mb-2">Statut</label>
+                    <select asp-for="Status"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition">
+                        <option value="NotStarted">Non débuté</option>
+                        <option value="InProgress">En cours</option>
+                        <option value="Completed">Terminé</option>
+                    </select>
+
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Couleur du projet</label>
+                   
+                    <div class="flex space-x-3">
+                        @foreach (var kvp in colors)
+                        {
+                            <label class="cursor-pointer relative">
+                                <input type="radio" asp-for="Color" value="@kvp.Key" class="sr-only peer" checked="@(Model.Color == kvp.Key)" />
+                                <div class="@kvp.Value w-10 h-10 rounded-xl transition-transform transform peer-checked:scale-110 peer-checked:ring-4 peer-checked:ring-offset-2 peer-checked:ring-offset-white"></div>
+                            </label>
+                        }
+
+                    </div>
+                </div>
+
+                <div class="p-4 bg-red-50 rounded-xl border border-red-200">
+                    <h4 class="font-medium text-red-800 mb-2"><i class="fas fa-exclamation-triangle mr-2"></i>Zone de danger</h4>
+                    <p class="text-sm text-red-600 mb-3">L'archivage du projet le rendra inaccessible aux membres.</p>
+                    <button type="submit" formaction="@Url.Action("Archive", "Projects", new { id = Model.Id })"
+                            class="px-4 py-2 bg-red-600 text-white rounded-xl hover:bg-red-700 transition text-sm font-medium">
+                        <i class="fas fa-archive mr-2"></i>Archiver ce projet
+                    </button>
+                </div>
+
+                <div class="flex justify-end space-x-4 pt-4 border-t">
+                    <a href="@Url.Action("Details", "Projects", new { id = Model.Id })"
+                       class="px-6 py-3 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition font-medium">
+                        Annuler
+                    </a>
+                    <button type="submit" class="px-6 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition font-medium">
+                        <i class="fas fa-save mr-2"></i>Enregistrer
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
